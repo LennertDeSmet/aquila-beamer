@@ -1,0 +1,66 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% Makes sure we can access the aquila theme files
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+
+\usetheme{aquila}
+
+\input{macros}
+
+\titlegraphic{}
+\title{The \aquila beamer theme}
+\subtitle{Minimal, elegant and against noise}
+\author{Lennert De Smet}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+    
+\frametitle{\aquila makes for crisp and clean presentations}
+\framesubtitle{No clutter, no distractions}
+
+\goldencolumn{}{
+\emph{Mathematics share modern fonts} \\
+We express a mathematical \accent{fact}
+\begin{align}
+    \colourblock{red_salsa}{$\displaystyle\int_{-\infty}^{\infty}$}\
+    \colourblock{celadon_blue}{$e$}^{-x^2} \, \mathrm{d}x 
+    = 
+    \sqrt{\colourblock{grassy_green}{$\pi$}}
+\end{align}
+
+\vspace{1em}
+
+\emph{With the \textbf{properties} of}
+\begin{itemize}
+    \item being an \colourblock{red_salsa}{integral}
+    \item involving \colourblock{celadon_blue}{$e$}
+    \item involving \colourblock{grassy_green}{$\pi$}
+\end{itemize}
+
+}
+
+\end{frame}
+
+
+\begin{stopframe}
+
+\goldencolumn{
+    \qrcode{../qr/personal_site_qr.pdf}{Visit personal page}%
+}{
+\emph{This page can display logos, QR codes} \\
+or any other content after your presentation
+
+\step
+
+\emph{It can stay open during further Q\&A}
+}
+
+\end{stopframe}
+
+
+\end{document}

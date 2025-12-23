@@ -1,0 +1,25 @@
+\mode<presentation>
+
+% Frame title template
+\defbeamertemplate*{frametitle}{aquila}[1][]{
+
+    \vskip1em\par%
+
+    % Add the frametitle
+    \begin{beamercolorbox}[#1]{frametitle}
+        \usebeamerfont{frametitle}\insertframetitle\par%
+    \end{beamercolorbox}%
+    
+    % Add the framesubtitle if it is given
+    \if\insertframesubtitle\@empty%
+    \else    
+        \begin{beamercolorbox}[#1]{framesubtitle}
+            \usebeamerfont{framesubtitle}\insertframesubtitle\par%
+        \end{beamercolorbox}%
+    \fi
+
+    \vskip1em\par
+}
+
+
+\mode<all>

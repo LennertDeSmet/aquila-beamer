@@ -1,0 +1,25 @@
+\usepackage{xspace}
+\usepackage{dsfont}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{svg}
+\usepackage{xspace}
+\usepackage{fontawesome}
+
+\renewcommand{\checkmark}{\faCheck}
+\newcommand{\xmark}{\faClose}
+
+%%% Math macros
+\newcommand{\ive}[1]{\llbracket#1\rrbracket}
+
+\newenvironment{rcases}{\left.\begin{aligned}}{\end{aligned}\right\rbrace}
+
+\newcommand{\expectation}[2]{\ensuremath{\mathbb{E}_{#1}\left[#2\right]}\xspace}
+\newcommand{\prob}[1]{\mathbb{P}\left(#1\right)}
+\newcommand{\bools}{\ensuremath{\mathbb{B}}\xspace}
+\newcommand{\fuzzy}{\ensuremath{\mathbb{F}}\xspace}
+\newcommand{\diff}{\ensuremath{\ \mathrm{d}}}
+\newcommand{\neuralparams}{\ensuremath{\boldsymbol{\Lambda}}\xspace}
+\newcommand{\params}{\ensuremath{\boldsymbol{\theta}}\xspace}
+\renewcommand{\vector}[1]{\ensuremath{\boldsymbol{#1}}\xspace}

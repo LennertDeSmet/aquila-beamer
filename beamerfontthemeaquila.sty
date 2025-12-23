@@ -1,0 +1,32 @@
+\mode<presentation>
+
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{inconsolata}
+\RequirePackage[default,defaultsans]{lato}
+
+\renewcommand*{\bfdefault}{m}               % Make the bold font medium thickness
+\renewcommand*{\seriesdefault}{l}           % Make the normal font light
+
+\RequirePackage[italic]{mathastext}
+
+\setbeamerfont{title}{size=\fontsize{13}{15}\selectfont}          % Make the title font Large
+\setbeamerfont{subtitle}{size=\large}       % Make the subtitle font large
+\setbeamerfont{author}{size=\normalfont}         % Make the author font small
+\setbeamerfont{institute}{size=\normalfont}      % Make the institute font small
+\setbeamerfont{date}{size=\small}           % Make the date font small
+
+\setbeamerfont{frametitle}{size=\Large}     % Make the frametitle font Large
+\setbeamerfont{framesubtitle}{size=\large}  % Make the framesubtitle font large
+
+% Repairs the \neq symbol for our font setup
+\makeatletter
+\newcommand{\neg@te}[2]{%
+    \vphantom{/#2}%
+    \ooalign{\hidewidth$\m@th#1/$\hidewidth\cr$\m@th#1#2$}%
+}
+\DeclareRobustCommand{\neq}{\mathrel{\mathpalette\neg@te{=}}}
+\RenewCommandCopy{\ne}{\neq}
+\makeatother
+
+\mode<all>

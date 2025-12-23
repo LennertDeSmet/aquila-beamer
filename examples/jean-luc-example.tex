@@ -1,0 +1,354 @@
+\documentclass[10pt, aspectratio=169]{beamer}
+
+% Makes sure we can access the aquila theme files
+\makeatletter
+\def\input@path{{../}}
+\makeatother
+
+\input{macros}
+
+\usetheme{aquila}
+
+\titlegraphic{}
+\title{On the principles of making a clear presentation}
+\subtitle{based on the work of Jean-luc Doumont}
+\author{Lennert De Smet}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}
+
+\attentioncenter{
+    You start your presentation with an attention-grabbing statement, to capture the interest of your audience
+}
+    
+\end{frame}
+
+\begin{frame}
+    
+\frametitle{The introduction needs to answer the questions \\ of what, why and how}
+
+\goldencolumn{
+\shift{need}
+}{
+\emph{What is the setting that you are going to discuss?} \\
+This part is for the audience and is \accent{not} about you yet
+}
+
+\step
+
+\goldencolumn{
+\shift{task}
+}{
+\emph{Why is this setting interesting?} \\
+This part explains the motivating \accent{research gap}
+}
+
+\step
+
+\goldencolumn{
+\shift{message}
+}{
+\emph{How are you solving the problem?} \\
+Now you talk about \accent{you} and your main message
+}
+
+\end{frame}
+
+
+\begin{frame}
+
+\begin{enumerate}
+    \only<1>{
+    \item You can use a table of contents to structure your presentation in \accent{3 - 5} points
+    }
+    \only<2>{
+    \item \textbf{Feel free to highlight and introduce the current point that you are going to discuss}
+    }
+    \babystep
+    \item The table of content serves as a \accent{preview} and helps the audience to follow
+    \babystep
+    \item While optional, the audience should always feel like they know where they are
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{The meat of your presentation starts now \\ by discussing your first point}
+
+\goldencolumn{}{
+\emph{A single point does not have to be limited} \\
+to a single slide
+
+\step
+
+\emph{Longer presentations will cover each point} \\
+over multiple subsequent slides
+
+\step
+
+\emph{Focus on keeping a clear structure} \\
+and \accent{always} distinctively transition between points
+}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{The title is a full sentence conveying the main message \\ using meaningful line breaks}
+
+\goldencolumn{}{
+\emph{A shifted \command{goldencolumn} contains the main text} \\
+that is of interest to the current slide
+
+\step
+
+\emph{Each sentence is consistently and cleanly aligned} \\
+and contains only the most necessary information
+
+\step
+
+\emph{Sentences are best limited to two lines} \\
+to maintain a high signal-to-noise ratio
+}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{enumerate}
+    \item You can use a table of contents to structure your presentation in \accent{3 - 5} points
+    \babystep
+    \only<1>{
+    \item The table of content now serves as an \accent{anchor} and helps the audience to follow
+    }
+    \only<2>{
+    \item \textbf{Take this time to link the previous point to the next one}
+    }
+    \babystep
+    \item While optional, the audience should always feel like they know where they are
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{Consistency is key for a clear presentation \\ but you can change things up}
+
+\begin{center}
+    A crucial statement or equation can deserve a more central presentation
+\end{center}
+{\LARGE
+\begin{align*}
+    G_{\mu \nu} + \Lambda g_{\mu \nu} = 
+    \colournode{orange_red}{
+        $\displaystyle\frac{8\pi G}{c^4} T_{\mu \nu}$
+        % $\kappa T_{\mu \nu}$
+    }{crucial_term}{0.1em}
+\end{align*}
+}
+
+\vspace{1.5em}
+
+\goldencolumn{}{
+\emph{
+    You can visually link to \colournode{white}{
+        \colouraccent{orange_red}{crucial parts}
+    }{crucial_part}{0.1em}
+} \\
+by using colour and connections
+}
+
+% A little bit of tikz never hurt anyone, right?
+\begin{tikzpicture}[overlay, remember picture]
+\node[between=crucial_term.south and crucial_part.north] (midpoint) {};
+
+\draw[thinline, shorten <= 1mm, shorten >= 1mm, draw=yellow_orange] (crucial_term.south) -- (crucial_term.south |- midpoint) -| (crucial_part.north);
+
+\end{tikzpicture}
+
+\reference{
+    Einstein, Albert.
+    (1916)
+}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Figures can always be shown and discussed \\ because of the refreshing amount of whitespace}
+
+\goldencolumn{
+    \pictureshift
+    \roundpic{0.9\linewidth}{../images/great-wave}%
+}{%
+\blackbf{The great wave off Kanagawa} \\
+\textit{Kanagawa-oki nami ura}
+
+\step
+
+\emph{The properties of interest are}
+\begin{itemize}
+    \item woodblock print from the Edo period
+    \item belongs to the Ukiyo-e stream of art
+    \item made by Hokusai
+\end{itemize}
+}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{enumerate}
+    \item You can use a table of contents to structure your presentation in \accent{3 - 5} points
+    \babystep
+    \item The table of content now serves as an \accent{anchor} and helps the audience to follow
+    \babystep
+    \only<1>{
+    \item While optional, the audience should always feel like they know where they are
+    }
+    \only<2>{
+    \item \textbf{Right now, you can transition to your final point}
+    }
+\end{enumerate}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{Never show information that you do not yet need \\ by applying the principle of spoon feeding}
+
+\goldencolumn{}{
+\onslide<1->
+\emph{Only revealing what you currently need} \\
+forces the audience to follow you along
+
+\step
+
+\onslide<2->
+\emph{Your slides should be understandable on their own} \\
+but you guide the audience while presenting
+
+}
+    
+\end{frame}
+
+\begin{frame}
+
+\begin{enumerate}
+    \item You can use a table of contents to structure your presentation in \accent{3 - 5} points
+    \babystep
+    \only<1>{
+    \item The table of content now serves as a \accent{review} and helps the audience to follow
+    }
+    \only<2->{
+    \item \textbf{You need a review now to transition to the conclusion}
+    }
+    \babystep
+    \item While optional, the audience should always feel like they know where they are
+\end{enumerate}
+
+\vspace{4em}
+
+\onslide<3>
+\goldencolumn{}{
+\emph{You can use the table of contents as a review slide} \\
+or use a more traditional summary slide
+}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{The conclusion precisely states how you tackle \\ the need from the introduction}
+
+\goldencolumn{
+\emph{Your refreshed audience...}
+
+\vfill
+}{
+\emph{...loves to hear how your method} \\
+outperforms SOTA by [quantity] in [metric]
+
+\step
+
+\emph{...can be told that you solved} \\
+the most difficult problem in your field
+
+\step
+
+\emph{...is amazed by your quick-witted proof} \\
+of a crucial theorem that opens up new perspectives
+    
+}
+    
+\end{frame}
+
+\begin{frame}
+
+\attentioncenter{
+    You close the presentation by linking your conclusion to the attention-grabbing statement at the start
+}
+    
+\end{frame}
+
+\begin{frame}
+\frametitle{Bonus: the general (recursive) structure of a presentation}
+
+\goldencolumn{}{
+
+\colournode{white}{
+    \emph{attention-grabber}
+}{attention}{0pt} \hfill [audience] \\
+\colournode{white}{
+    need
+}{need}{0pt} \hfill [audience] \\
+task \hfill [you] \\
+\colournode{white}{
+    message
+}{message}{0pt} \hfill [vague] \\
+preview
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+point 1 \\
+transition 1 \\
+$\vdots$ \\
+transition $N - 1$ \\
+point $N$ \hfill [$3 \leq N \leq 5$]
+
+\rule[0.5ex]{\linewidth}{1pt}
+
+review \\
+\colournode{white}{
+    conclusion
+}{conclusion}{0pt} \hfill [precise] \\
+\colournode{white}{
+    \emph{close}
+}{close}{0pt}
+}
+
+\begin{tikzpicture}[overlay, remember picture]
+\draw[thinpath, shorten <= 1mm, shorten >= 1mm, draw=softest_black] 
+    (conclusion.west) -- ([xshift=-1.5em]conclusion.west) |- (need.west);
+\draw[thinpath, shorten <= 1mm, shorten >= 1mm, draw=softest_black] 
+    (conclusion.west) -- ([xshift=-1.5em]conclusion.west) |- (message.west);
+\draw[thinpath, shorten <= 1mm, shorten >= 1mm, draw=softer_black] 
+    (close.west) -- ([xshift=-2.5em]close.west) |- (attention.west);
+\end{tikzpicture}
+\end{frame}
+
+\begin{stopframe}
+
+\goldencolumn{
+    \qrcode{../qr/personal_site_qr.pdf}{Visit personal page}%
+}{
+\emph{This page can display logos, QR codes} \\
+or any other content after your presentation
+
+\step
+
+\emph{It can stay open during further Q\&A}
+}
+
+\end{stopframe}
+
+
+\end{document}

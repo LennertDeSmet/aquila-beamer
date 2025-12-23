@@ -1,0 +1,77 @@
+\mode<presentation>
+
+% Define the new command and its storage variable
+\def\inserttitleimage{} % Initialize as empty
+\newcommand{\titleimage}[1]{\def\inserttitleimage{#1}}
+
+% Title page template
+\defbeamertemplate*{title page}{aquila}[1][]{
+
+    % Add the title graphics
+    \begin{beamercolorbox}[#1]{title page graphic}
+        \hfill\inserttitlegraphic\par%
+    \end{beamercolorbox}%
+
+    \ifx\inserttitleimage\@empty%
+        \vskip8.5em\par%
+    \else
+        \vskip6em\par%
+    \fi
+
+    % Add the title
+    \begin{beamercolorbox}[#1]{title page header}
+        \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+
+    % Add the subtitle if it is given
+    \if\insertsubtitle\@empty%
+    \else
+        \vskip0.5em\par%
+
+        \begin{beamercolorbox}[#1]{title page subtitle}
+            \usebeamerfont{subtitle}\insertsubtitle\par%    
+        \end{beamercolorbox}
+    \fi
+
+    \vskip2em\par%
+
+    % Add the author
+    \begin{beamercolorbox}[#1]{title page author}
+        \usebeamerfont{author}\insertauthor\par%
+    \end{beamercolorbox}%
+
+    % Add the institute if it is given
+    \ifx\insertinstitute\@empty%
+    \else
+        \vskip0.2em\par%
+
+        \begin{beamercolorbox}[#1]{title page institute}
+            \usebeamerfont{institute}\insertinstitute\par%
+        \end{beamercolorbox}%
+    \fi
+
+    \vskip4em\par%
+
+
+    \ifx\inserttitleimage\@empty%
+    \else
+        \begin{beamercolorbox}[#1]{title page logo}
+            \hfill\inserttitleimage\par
+        \end{beamercolorbox}%
+        \vskip0.5em%
+    \fi
+
+    \vfill
+}
+
+% Exit page template
+\defbeamertemplate*{end page}{aquila}[1][]{
+
+    \begin{beamercolorbox}[#1]{title page graphic}
+        \hfill\inserttitlegraphic\par%
+    \end{beamercolorbox}%
+
+    \vskip7em\par%
+}
+
+\mode<all>

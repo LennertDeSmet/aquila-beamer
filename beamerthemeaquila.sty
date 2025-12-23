@@ -1,0 +1,308 @@
+\mode<presentation>
+
+%%% Requirements
+\RequirePackage[%
+    linewidth=1pt,
+    middlelinecolor= black,
+    middlelinewidth=0.4pt,
+    roundcorner=1pt,
+    topline = false,
+    rightline = false,
+    bottomline = false,
+    rightmargin=0pt,
+    skipbelow=0pt,
+    leftmargin=0cm,
+    innerleftmargin=0.25cm,
+    innerrightmargin=0pt,
+    innertopmargin=0pt,
+    innerbottommargin=0pt,
+]{mdframed}
+
+
+% Tikz requirements, libraries and styles
+\RequirePackage{tikz}
+\RequirePackage{circuitikz}
+
+\usetikzlibrary{
+    calc,
+    shapes,
+    shapes.misc,
+    shapes.symbols,
+    backgrounds,
+    fit,
+    arrows,
+    arrows.meta,
+    positioning,
+    decorations.pathmorphing,
+    patterns,
+    patterns.meta,
+    scopes,
+}
+
+\tikzset{
+circnode/.style={
+        % draw=softer_black, thick,
+        fill=softest_black, align=center,
+        fill opacity=0.25, text opacity=1,
+        circle,
+        minimum width=2em
+    },
+sqnode/.style={
+        % draw=softer_black, thick,
+        fill=grey,
+        fill opacity=0.25, text opacity=1,
+        rounded corners=0.25em,
+        minimum width=2.5em, minimum height=2.5em,
+        inner sep=0.5em
+    },
+regpath/.style={
+-Triangle[round], draw=softest_black, ultra thick, rounded corners=0.25em
+},
+regline/.style={
+        solid, draw=softest_black, ultra thick, rounded corners=0.25em, shorten <= 1mm, shorten >= 1mm
+    },
+thinpath/.style={
+-Triangle[round], draw=softest_black, thick, rounded corners=0.25em
+},
+thinline/.style={
+        solid, draw=softest_black, thick, rounded corners=0.25em, shorten <= 1mm, shorten >= 1mm
+    },
+between/.style args={#1 and #2}{
+        at = ($(#1)!0.5!(#2)$)
+    },
+intersect/.style args={#1 and #2}{
+        at = ($(#1|-#2)$)
+    },
+figpgms/.style={
+        inner sep=0mm, minimum width=10mm, minimum height=10mm
+    },
+}
+
+% Settings
+\usefonttheme{aquila}
+\useinnertheme{aquila}
+\useoutertheme{aquila}
+\usecolortheme{aquila}
+
+% Defining built-in colors
+\definecolor{red_salsa}{HTML}{F94144}
+\definecolor{orange_red}{HTML}{F3722C}
+\definecolor{yellow_orange}{HTML}{F8961E}
+\definecolor{mango_tango}{HTML}{F9844A}
+\definecolor{maize_crayola}{HTML}{F9C74F}
+\definecolor{pistachio}{HTML}{90BE6D}
+\definecolor{jungle_green}{HTML}{43AA8B}
+\definecolor{grassy_green}{HTML}{61b876}
+\definecolor{steel_teal}{HTML}{4D908E}
+\definecolor{queen_blue}{HTML}{577590}
+\definecolor{celadon_blue}{HTML}{277DA1}
+\definecolor{poinant_purple}{HTML}{A87DC1}
+\definecolor{purpose_purple}{HTML}{4D5AC0}
+\definecolor{bliss_brown}{HTML}{C36D3A}
+\definecolor{turd_turqoise}{HTML}{44BAC3}
+\definecolor{minty-blue}{cmyk}{.59,.07,.00,.00}
+
+\definecolor{soft_white}{HTML}{F1F1F1}
+\definecolor{softer_white}{HTML}{E5E5E5}
+\definecolor{grey}{HTML}{A5A5A5}
+\definecolor{soft_black}{HTML}{101010}
+\definecolor{softer_black}{HTML}{2A2A2A}
+\definecolor{softest_black}{HTML}{707070}
+
+% Defining custom templates
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded]
+\setbeamersize{
+    text margin left=3em,
+    text margin right=3em
+}
+
+\setbeamertemplate{items}[circle]
+\setbeamertemplate{enumerate item}{
+    \tikz[baseline=(AquilaEnum.base), remember picture]{
+        \node[circnode, minimum size=13pt, fill=soft_black, inner sep=1pt, outer sep=-7pt, label={[yshift=.5em]}] (AquilaEnum) {\textcolor{white}{\arabic{enumi}}};
+    }
+}
+
+% Disabling PDF commands, for example used in \author fields
+\pdfstringdefDisableCommands{%
+\def\\{}%
+\def\texttt#1{<#1>}%
+\def\vspace#1{<#1>}%
+}
+
+% A toggle for slide numbers - off by default
+\newcommand{\slidenumbers}{
+    \setbeamertemplate{footline}{
+        \hfill%
+        \usebeamercolor[fg]{page number in head/foot}%
+        \usebeamerfont{page number in head/foot}%
+        \setbeamertemplate{page number in head/foot}[framenumber]%
+        \usebeamertemplate*{page number in head/foot}\kern1em\vskip4.5pt%
+    }
+}
+
+%%% Text and spacing commands
+% Spacing
+\newcommand{\golden}{0.382\linewidth}
+\newcommand{\togolden}{0.618\linewidth}
+
+\newcommand{\babystep}{\vspace{1em}}
+\newcommand{\step}{\vspace{2em}}
+
+\newcommand{\goldencentercolumn}[2]{%
+    % Store the first argument in a temporary macro
+    \def\tempa{#1}%
+    % Compare the temporary macro to the standard \empty macro
+    \ifx\tempa\empty%
+        \hspace{\golden}%
+    \else%
+        \begin{minipage}[t]{\golden}%
+            #1%
+        \end{minipage}%
+    \fi%
+    % Crucial: Ensure no space is added here so columns stay side-by-side
+    \begin{minipage}[t]{\togolden}%
+        #2%
+    \end{minipage}%
+}
+
+\newcommand{\goldencolumn}[2]{%
+    % Store the first argument in a temporary macro
+    \def\tempa{#1}%
+    % Compare the temporary macro to the standard \empty macro
+    \ifx\tempa\empty%
+        \hspace{\golden}%
+    \else%
+        \begin{minipage}[t]{\golden}%
+            #1%
+        \end{minipage}%
+    \fi%
+    % Crucial: Ensure no space is added here so columns stay side-by-side
+    \begin{minipage}[t]{\togolden}%
+        #2%
+    \end{minipage}%
+}
+
+\newcommand{\shift}[1]{
+    \hfill
+    #1
+    \hspace{1em}
+}
+
+\newcommand{\pictureshift}{%
+    \phantom{M}\vspace{-1em}
+}
+
+\newcommand{\reference}[1]{
+    \vfill
+    \vspace{2em}
+    {\footnotesize \hfill
+        #1
+    }
+}
+
+
+% Text
+\newcommand{\blackbf}[1]{\emph{\textbf{#1}}}
+\renewcommand{\accent}[1]{\textcolor{\accentcolour}{\textbf{#1}}}
+\renewcommand{\emph}[1]{\textcolor{softer_black}{#1}}
+\newcommand{\colouraccent}[2]{\textcolor{#1}{\textbf{#2}}}
+\newcommand{\qq}[1]{``#1''}
+\newcommand{\command}[1]{$\mathtt{\backslash}$#1}
+
+\newcommand{\attentioncenter}[1]{%
+    \begin{center}
+        \Large%
+        \blackbf{%
+            #1%
+        }%
+    \end{center}
+}
+
+%%% Tikz logic and helper functions
+\newcommand{\colournode}[4]{%
+    \tikz[baseline=(#3.base), remember picture]
+    \node[
+        rounded corners=0.25em,
+        fill=#1,
+        fill opacity=0.2,
+        text opacity=1,
+        inner sep=#4,
+        outer sep=0em
+    ] (#3) {
+        #2%
+    };
+    \xspace
+}
+
+\newcommand{\colourmathnode}[3]{\colournode{#1}{\ensuremath{#2}}{#3}{0.25em}}
+\newcommand{\colouraccentnode}[3]{\colournode{white}{\colouraccent{#1}{#2}}{#3}{0em}}
+\newcommand{\textnode}[2]{\colournode{white}{#1}{#2}{0em}}
+
+\newcommand{\colourblock}[2]{%
+    \tikz[baseline=(text.base)]
+    \node[
+        rounded corners=0.25em,
+        fill=#1,
+        fill opacity=0.2,
+        text opacity=1,
+        inner sep=0.25em,
+        outer sep=0em
+    ] (text) {
+        #2
+    };
+    \xspace
+}
+
+%%% Custom commands
+\newcommand{\accentcolour}{minty-blue}
+\newcommand{\aquila}{\textcolor{minty-blue}{\texttt{Aquila}}\xspace}
+
+%%% Rounded and inline images
+\newsavebox{\imagebox}
+\newcommand{\roundpic}[2]{
+    \sbox{\imagebox}{\includegraphics[width=#1]{#2}} % Save the image inside the box
+
+    \begin{tikzpicture}
+        % Get the width and height from the saved box and clip with rounded corners
+        \clip[rounded corners=0.25em] (0,0) rectangle (\wd\imagebox, \ht\imagebox);
+        % Insert the image from the savebox
+        \usebox{\imagebox}
+    \end{tikzpicture}
+}
+
+\newsavebox{\imagehbox}
+\newcommand{\roundhpic}[2]{
+    \sbox{\imagehbox}{\includegraphics[height=#1]{#2}} % Save the image inside the box
+
+    \begin{tikzpicture}
+        % Get the width and height from the saved box and clip with rounded corners
+        \clip[rounded corners=0.25em] (0,0) rectangle (\wd\imagehbox, \ht\imagehbox);
+        % Insert the image from the savebox
+        \usebox{\imagehbox}
+    \end{tikzpicture}
+}
+\newcommand{\inlineimage}[1]{\hspace{-0.45em}
+    \ensuremath{\vcenter{\hbox{\includegraphics[height=1em]{#1}}}}}
+
+\newcommand{\qrcode}[2]{%
+    \pictureshift
+    \begin{minipage}{6em}
+        \centering
+        \includegraphics[width=6em]{#1}%
+        \begin{center}
+            \blackbf{#2}%
+        \end{center}
+    \end{minipage}
+}
+
+%%% End page
+\newenvironment{stopframe}{
+    \begin{frame}
+    \usebeamertemplate{end page}
+    }{
+    \end{frame}
+}
+
+\mode<all>
