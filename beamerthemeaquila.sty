@@ -76,6 +76,12 @@ intersect/.style args={#1 and #2}{
 figpgms/.style={
         inner sep=0mm, minimum width=10mm, minimum height=10mm
     },
+pgf/.style={
+        rounded corners=0.25em,
+        line width=2pt,
+        opacity=0.5,
+        inner sep=0.5em
+    },
 }
 
 % Settings
@@ -300,8 +306,8 @@ figpgms/.style={
 %%% End page
 \newenvironment{stopframe}{
     \begin{frame}
-    \usebeamertemplate{end page}
-    }{
+        \usebeamertemplate{end page}
+        }{
     \end{frame}
 }
 
