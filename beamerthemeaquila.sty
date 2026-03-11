@@ -198,9 +198,18 @@ plate/.style={
     \phantom{M}\vspace{-1em}
 }
 
+\newcommand{\refnumber}[1]{{\footnotesize\textsuperscript{#1}}}
+
 \newcommand{\reference}[1]{
     \vfill
     \vspace{2em}
+    {\footnotesize \hfill
+        #1
+    }
+}
+\newcommand{\nextreference}[1]{
+    \newline
+    \vspace{1em}
     {\footnotesize \hfill
         #1
     }
