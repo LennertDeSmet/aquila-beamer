@@ -154,6 +154,58 @@ plate/.style={
 \newcommand{\babystep}{\vspace{1em}}
 \newcommand{\step}{\vspace{2em}}
 
+
+\newcommand{\goldencolumnr}[2]{%
+    % Store the first argument in a temporary macro
+    \def\tempa{#1}%
+    % Compare the temporary macro to the standard \empty macro
+    \ifx\tempa\empty%
+        \hspace{\togolden}%
+    \else%
+        \begin{minipage}[t]{\togolden}%
+            #1%
+        \end{minipage}%
+    \fi%
+    % Crucial: Ensure no space is added here so columns stay side-by-side
+    \begin{minipage}[t]{\golden}%
+        #2%
+    \end{minipage}%
+}
+
+
+\newcommand{\triplecol}[3]{%
+    \begin{minipage}[t]{.1\linewidth}% #1
+        #1%
+    \end{minipage}%
+    \hfill% 
+    \begin{minipage}[t]{.43\linewidth}% #2
+        #2%
+    \end{minipage}%
+    \hfill%
+    \begin{minipage}[t]{.43\linewidth}% #3
+        #3%
+    \end{minipage}%
+}
+
+
+\newcommand{\goldencentercolumnr}[2]{%
+    % Store the first argument in a temporary macro
+    \def\tempa{#1}%
+    % Compare the temporary macro to the standard \empty macro
+    \ifx\tempa\empty%
+        \hspace{\togolden}%
+    \else%
+        \begin{minipage}{\togolden}%
+            #1%
+        \end{minipage}%
+    \fi%
+    % Crucial: Ensure no space is added here so columns stay side-by-side
+    \begin{minipage}{\golden}%
+        #2%
+    \end{minipage}%
+}
+
+
 \newcommand{\goldencentercolumn}[2]{%
     % Store the first argument in a temporary macro
     \def\tempa{#1}%
@@ -297,8 +349,11 @@ plate/.style={
         \usebox{\imagehbox}
     \end{tikzpicture}
 }
-\newcommand{\inlineimage}[1]{\hspace{-0.45em}
-    \ensuremath{\vcenter{\hbox{\includegraphics[height=1em]{#1}}}}}
+
+\newcommand{\inline}[2][1em]{%
+    \hspace{-0.45em}\raisebox{-0.2\height}{\resizebox{!}{#1}{#2}}\hspace{-0.15em}%
+}
+\newcommand{\inlineimage}[1]{\inline{\includegraphics[height=1em]{#1}}}
 
 \newcommand{\qrcode}[2]{%
     \pictureshift
