@@ -172,6 +172,15 @@ plate/.style={
     \end{minipage}%
 }
 
+\newcommand{\equalcol}[2]{
+    \begin{minipage}[t]{.475\linewidth}% #1
+        #1%
+    \end{minipage}%
+    \hfill% 
+    \begin{minipage}[t]{.475\linewidth}% #2
+        #2%
+    \end{minipage}%
+}
 
 \newcommand{\triplecol}[3]{%
     \begin{minipage}[t]{.1\linewidth}% #1
