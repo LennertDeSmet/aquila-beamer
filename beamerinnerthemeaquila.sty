@@ -74,4 +74,19 @@
     \vskip7em\par%
 }
 
+% Section divider ("black insertion") frame.
+% Full soft_black background with a single soft_white, centered section header.
+% Usage:
+%   \sectionframe                 % uses the current \insertsection
+%   \sectionframe[Custom heading]  % uses the supplied text instead
+\newcommand{\sectionframe}[1][\insertsection]{%
+    \begingroup
+    \setbeamercolor{background canvas}{bg=softer_black}%
+    \begin{frame}[plain,noframenumbering,c]
+        \centering
+        {\usebeamerfont{frametitle}\LARGE\bf\color{soft_white}#1\par}%
+    \end{frame}%
+    \endgroup
+}
+
 \mode<all>
