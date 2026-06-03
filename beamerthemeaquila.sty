@@ -82,6 +82,31 @@ plate/.style={
     }
 }
 
+% \lplate[tikz options]{top-left node}{top-right node}{foot node}(coord name)
+% Draws an L-shaped plate:  [top-left][top-right]
+%                                      [foot]
+% Optional trailing (coord) names a coordinate at the bottom-left corner,
+% e.g. for label placement: \node[below=0.1em of sym, anchor=north west]{...};
+\newcommand{\lplate}[4][]{%
+    \path[rounded corners=0.25em, line width=2pt, opacity=0.5, #1]
+        let \p1=(#2.west),  \p2=(#3.east),  \p3=(#2.north),
+            \p4=(#2.south), \p5=(#3.west),
+            \p6=(#4.east),  \p7=(#4.south)
+        in
+        (\x1-0.5em, \y3+0.5em) --
+        (\x2+0.5em, \y3+0.5em) --
+        (\x6+0.5em, \y7-0.5em) --
+        (\x5-0.5em, \y7-0.5em) --
+        (\x5-0.5em, \y4-0.5em) --
+        (\x1-0.5em, \y4-0.5em) --
+        cycle;%
+    \@ifnextchar({\lplate@coord{#2}}{}%
+}
+\def\lplate@coord#1(#2){%
+    \path let \p1=(#1.west), \p2=(#1.south) in
+        coordinate (#2) at (\x1-0.5em, \y2-0.5em);%
+}
+
 % Settings
 \usefonttheme{aquila}
 \useinnertheme{aquila}
@@ -196,6 +221,19 @@ plate/.style={
     \end{minipage}%
 }
 
+\newcommand{\customtriplecol}[6]{%
+    \begin{minipage}[t]{#1\linewidth}% #1
+        #4%
+    \end{minipage}%
+    \hfill% 
+    \begin{minipage}[t]{#2\linewidth}% #2
+        #5%
+    \end{minipage}%
+    \hfill%
+    \begin{minipage}[t]{#3\linewidth}% #3
+        #6%
+    \end{minipage}%
+}
 
 \newcommand{\goldencentercolumnr}[2]{%
     % Store the first argument in a temporary macro
