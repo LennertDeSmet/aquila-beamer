@@ -280,11 +280,15 @@ plate/.style={
         \hspace{\golden}%
     \else%
         \begin{minipage}[t]{\golden}%
+            \pictureshift
+
             #1%
         \end{minipage}%
     \fi%
     % Crucial: Ensure no space is added here so columns stay side-by-side
     \begin{minipage}[t]{\togolden}%
+        \pictureshift
+
         #2%
     \end{minipage}%
 }
@@ -297,6 +301,7 @@ plate/.style={
 
 \newcommand{\pictureshift}{%
     \phantom{M}\vspace{-1em}
+
 }
 
 \newcommand{\refnumber}[1]{{\footnotesize\textsuperscript{#1}}}
@@ -328,7 +333,7 @@ plate/.style={
 \newcommand{\attentioncenter}[1]{%
     \begin{center}
         \Large%
-        \blackbf{%
+        \textbf{%
             #1%
         }%
     \end{center}
