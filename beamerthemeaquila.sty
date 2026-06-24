@@ -43,7 +43,7 @@
 
 \tikzset{
 circnode/.style={
-        fill=softest_black, align=center,
+        fill=grey, align=center,
         fill opacity=0.25, text opacity=1,
         circle,
         minimum width=2em
@@ -190,49 +190,69 @@ plate/.style={
         \hspace{\togolden}%
     \else%
         \begin{minipage}[t]{\togolden}%
+            \pictureshift
+
             #1%
         \end{minipage}%
     \fi%
     % Crucial: Ensure no space is added here so columns stay side-by-side
     \begin{minipage}[t]{\golden}%
+        \pictureshift
+
         #2%
     \end{minipage}%
 }
 
 \newcommand{\equalcol}[2]{
     \begin{minipage}[t]{.475\linewidth}% #1
+        \pictureshift
+
         #1%
     \end{minipage}%
     \hfill% 
     \begin{minipage}[t]{.475\linewidth}% #2
+        \pictureshift
+
         #2%
     \end{minipage}%
 }
 
 \newcommand{\triplecol}[3]{%
     \begin{minipage}[t]{.1\linewidth}% #1
+        \pictureshift
+
         #1%
     \end{minipage}%
     \hfill% 
     \begin{minipage}[t]{.43\linewidth}% #2
+        \pictureshift
+
         #2%
     \end{minipage}%
     \hfill%
     \begin{minipage}[t]{.43\linewidth}% #3
+        \pictureshift
+
         #3%
     \end{minipage}%
 }
 
 \newcommand{\customtriplecol}[6]{%
     \begin{minipage}[t]{#1\linewidth}% #1
+        \pictureshift
+        
         #4%
     \end{minipage}%
     \hfill% 
     \begin{minipage}[t]{#2\linewidth}% #2
+        \pictureshift
+
         #5%
     \end{minipage}%
     \hfill%
     \begin{minipage}[t]{#3\linewidth}% #3
+        \pictureshift
+        
         #6%
     \end{minipage}%
 }
@@ -245,11 +265,15 @@ plate/.style={
         \hspace{\togolden}%
     \else%
         \begin{minipage}{\togolden}%
+            \pictureshift
+
             #1%
         \end{minipage}%
     \fi%
     % Crucial: Ensure no space is added here so columns stay side-by-side
     \begin{minipage}{\golden}%
+        \pictureshift
+
         #2%
     \end{minipage}%
 }
@@ -263,11 +287,15 @@ plate/.style={
         \hspace{\golden}%
     \else%
         \begin{minipage}[t]{\golden}%
+            \pictureshift
+
             #1%
         \end{minipage}%
     \fi%
     % Crucial: Ensure no space is added here so columns stay side-by-side
     \begin{minipage}[t]{\togolden}%
+        \pictureshift
+
         #2%
     \end{minipage}%
 }
@@ -309,9 +337,7 @@ plate/.style={
 \newcommand{\reference}[1]{
     \vfill
     \vspace{2em}
-    {\footnotesize \hfill
-        #1
-    }
+    {\footnotesize \hfill #1}
 }
 \newcommand{\nextreference}[1]{
     \newline
